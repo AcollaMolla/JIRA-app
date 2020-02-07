@@ -36,6 +36,26 @@
                     "condition": "user_is_logged_in"
                 }]
             }
+        ],
+        "jiraProjectTabPanels": [
+            {
+                "key": "my-requests-link",
+                "name": {
+                    "value": "My Requests"
+                },
+                "url": "/my-requests",
+                "conditions": [
+                    {
+                        "condition": "user_is_logged_in"
+                    },
+                    {
+                        "condition": "can_use_application",
+                        "params": {
+                            "applicationKey": "jira-servicedesk"
+                        }
+                    }
+                ]
+            }
         ]
     }
 }
