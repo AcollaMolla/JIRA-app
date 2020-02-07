@@ -35,9 +35,7 @@
                 "conditions": [{
                     "condition": "user_is_logged_in"
                 }]
-            }
-        ],
-        "jiraProjectTabPanels": [
+            },
             {
                 "key": "my-requests-link",
                 "name": {

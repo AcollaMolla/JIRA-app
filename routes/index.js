@@ -11,13 +11,15 @@ export default function routes(app, addon) {
         // Rendering a template is easy; the render method takes two params:
         // name of template and a json object to pass the context in.
         res.render('hello-world', {
-            title: 'Atlassian Connect'
+            title: 'Atlassian Connect test'
             //issueId: req.query['issueId']
         });
     });
 
     app.get('/my-requests', addon.authenticate(), function(req, res){
-        res.render('my-requests');
+        res.render('my-requests', {
+            title: 'Atlassian Connect'
+        });
     });
 
     // Add additional route handlers here...
