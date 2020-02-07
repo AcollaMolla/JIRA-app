@@ -1,10 +1,21 @@
 $(document).ready(function () {
+    function getSlaTimeLeft(id){
+        AP.request({
+            url: '/rest/servicedeskapi/request/' + id,
+            success: function(response){
+                var json = JSON.parse(response);
+                console.log("hämytar sla");
+                return '1h';
+            }
+        });
+    }
     // GET our Service Desk requests via the Jira Service Desk REST API
     AP.request({
         url: '/rest/servicedeskapi/request',
         success: function (response) {
             // Parse the response JSON
             var json = JSON.parse(response);
+            console.log("make request");
 
             // Store the base URL for later
             var baseUrl = json._links.base;
@@ -19,6 +30,7 @@ $(document).ready(function () {
                             $('<th>').text('Current Status'),
                             $('<th>').text('Summary'),
                             $('<th>').text('Date Created'),
+                            $('<th>').text('Time left to first response'),
                             $('<th>')
                         )
                     ),
@@ -35,6 +47,7 @@ $(document).ready(function () {
                                 $('<td>').text(e.currentStatus.status),
                                 $('<td>').text(e.requestFieldValues[0].value),
                                 $('<td>').text(e.createdDate.friendly),
+                                $('<td>').text(getSlaTimeLeft(e.issueKey)),
                                 $('<td>').append(
                                     $('<a>').attr('href',
                                                     baseUrl + '/servicedesk/customer/portal/' + e.serviceDeskId + '/' + e.issueKey)

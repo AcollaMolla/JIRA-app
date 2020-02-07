@@ -18,18 +18,25 @@
                 "key": "hello-world-page-jira",
                 "location": "system.top.navigation.bar",
                 "name": {
-                    "value": "Hello World"
+                    "value": "Hello World JIRA"
                 },
                 "url": "/hello-world",
                 "conditions": [{
                     "condition": "user_is_logged_in"
-                }]
+                },
+                {
+                    "condition": "can_use_application",
+                    "params": {
+                        "applicationKey": "jira-servicedesk"
+                    }
+                }
+            ]
             },
             {
                 "key": "hello-world-page-confluence",
                 "location": "system.header/left",
                 "name": {
-                    "value": "Hello World"
+                    "value": "Hello World Confluence"
                 },
                 "url": "/hello-world",
                 "conditions": [{
