@@ -5,7 +5,7 @@ $(document).ready(function () {
             success: function(response){
                 var json = JSON.parse(response);
                 console.log("hämytar sla");
-                return '1h';
+                return json;
             }
         });
     }
@@ -36,6 +36,7 @@ $(document).ready(function () {
                     ),
                     $('<tbody>').append(
                         $.map(json.values, function (e) {
+                            var test = $('<td>').text(getSlaTimeLeft(e.issueId));
                             // Map each request to a HTML table row
                             return $('<tr>').append(
                                 $('<td>').append(
@@ -48,6 +49,7 @@ $(document).ready(function () {
                                 $('<td>').text(e.requestFieldValues[0].value),
                                 $('<td>').text(e.createdDate.friendly),
                                 $('<td>').text(getSlaTimeLeft(e.issueKey)),
+                                test,
                                 $('<td>').append(
                                     $('<a>').attr('href',
                                                     baseUrl + '/servicedesk/customer/portal/' + e.serviceDeskId + '/' + e.issueKey)
